@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sarch</title>
+    <!-- <link type="text/css" rel="stylesheet" href="./public/searchStyle.css" /> -->
+</head>
+<style>
+    .container {
+        margin-top: 15px;
+        padding: 0 10px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        width: 100%;
+        /* height: 100%; */
+        display: grid;
+        grid-template-columns: 8fr 6fr 8fr 1fr;
+        font-size: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px rgba(128, 128, 128, 0.11) solid;
+    }
+
+    #resultSong {
+        width: 100%;
+    }
+
+    .songContainer {
+        padding: 2px 10px;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 8fr 6fr 8fr 1fr;
+        font-size: 12px;
+        padding-top: 13px;
+    }
+
+    .songContainer:hover {
+        background-color: rgba(127, 255, 212, 0.418);
+
+    }
+
+    .songContainer span img {
+        width: 23px;
+        height: 23px;
+        position: relative;
+        left: 5px;
+        bottom: 6px;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+    <div class="container">
+        <span>歌曲</span>
+        <span>演唱者</span>
+        <span>专辑名</span>
+        <span>收藏</span>
+    </div>
+    <div id="resultSong">
+        <div class="songContainer">
+            <span>花海</span>
+            <span>周杰伦</span>
+            <span>魔杰座</span>
+            <span><img src="./public/image/collection.png" alt=""></span>
+        </div>
+    </div>
+</body>
+
+<script src="./renderer.js"></script>
+<script>
+    function loadCollection() {
+        var resultSong = document.getElementById("resultSong")
+        var loadCollection = window.parent.document.getElementById("loadCollection")
+        resultSong.innerHTML = loadCollection.innerHTML
+        console.log(loadCollection.innerHTML)
+    }
+    window.onload = loadCollection()
+</script>
+
+</html>

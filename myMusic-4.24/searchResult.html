@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sarch</title>
+    <!-- <link type="text/css" rel="stylesheet" href="./public/searchStyle.css" /> -->
+</head>
+<style>
+    body {
+        margin: 10px 0 0 0;
+        padding: 0;
+        overflow: scroll;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+    }
+
+
+
+    /* 设置滚动条 */
+    /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+    body::-webkit-scrollbar {
+        width: 3px;
+        /*滚动条宽度*/
+        height: 2px;
+        /*!*滚动条高度*!*/
+    }
+
+    /*定义滚动条轨道 内阴影+圆角*/
+    body::-webkit-scrollbar-track {
+        -webkit-box-shadow: inset 0 0 6px rgba(255, 255, 255, 0);
+        /* border-radius: 10px; */
+        /*滚动条的背景区域的圆角*/
+        /* background-color: rgba(255, 255, 255, 0); */
+        /* 滚动条的背景颜色 */
+    }
+
+    /*定义滑块 内阴影+圆角*/
+    body::-webkit-scrollbar-thumb {
+        border-radius: 2px;
+        /*滚动条的圆角*/
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+        background-color: rgba(56, 238, 177, 0.493);
+        /*滚动条的背景颜色*/
+    }
+
+    #search {
+        font-weight: 700;
+        font-size: 20px;
+        margin-right: 10px;
+    }
+
+    #searchFor {
+        font-size: 13px;
+        color: rgb(120, 127, 141);
+    }
+
+    .outBox {
+        width: 90%;
+        height: 100%;
+    }
+
+    .container {
+        margin-top: 15px;
+        padding: 0 10px;
+        box-sizing: border-box;
+        margin-bottom: 10px;
+        width: 100%;
+        /* height: 100%; */
+        display: grid;
+        grid-template-columns: 8fr 6fr 8fr 1fr;
+        font-size: 15px;
+        padding-bottom: 15px;
+        border-bottom: 1px rgba(128, 128, 128, 0.11) solid;
+    }
+
+    #resultSong {
+        width: 100%;
+    }
+
+    .songContainer {
+        padding: 2px 10px;
+        box-sizing: border-box;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-columns: 8fr 6fr 8fr 1fr;
+        font-size: 12px;
+        padding-top: 13px;
+    }
+
+    .songContainer:hover {
+        background-color: rgba(127, 255, 212, 0.418);
+
+    }
+
+    .songContainer span img {
+        width: 23px;
+        height: 23px;
+        position: relative;
+        left: 5px;
+        bottom: 6px;
+        cursor: pointer;
+    }
+</style>
+
+<body>
+
+    <div class="outBox">
+        <span id="search"></span><span id="searchFor">的搜索结果如下</span>
+        <div class="container">
+            <span>歌曲</span>
+            <span>演唱者</span>
+            <span>专辑名</span>
+            <span>收藏</span>
+        </div>
+        <div id="resultSong">
+
+            <!-- <div class="songContainer">
+                <span>花海</span>
+                <span>周杰伦</span>
+                <span>魔杰座</span>
+                <span><img src="./public/image/collection.png" alt=""></span>
+            </div> -->
+        </div>
+    </div>
+
+</body>
+
+<script src="./renderer.js"></script>
+
+</html>

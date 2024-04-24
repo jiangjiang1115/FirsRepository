@@ -1,0 +1,22 @@
+新建文件夹，到其目录下进入cmd
+npm init 
+
+npm install electron --save-dev 下载依赖包
+
+npm run start启动程序
+
+npm install --save-dev @electron-forge/cli 下载打包所需工具包
+npx electron-forge import  使用转化脚本将项目导入electron forge，转化完成后会将一些脚本添加到package.json
+
+注意package.json的作者和描述必填
+npm run make  打包程序，在新生成的out目录下创建可分发文件
+
+使程序受用户系统信任需创建数字证书-----
+发布+自动更新----
+
+
+Electron无边框窗口（自定义最小化、最大化、关闭、可拖拽）：参考
+https://www.jianshu.com/p/adf819473911
+
+获取音乐 url
+https://music.163.com/song/media/outer/url?id=id.mp3 以 src 赋予 Audio 即可播放

@@ -1,0 +1,295 @@
+html {
+    /* 去掉自带滚动条 */
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+
+body {
+    height: 100%;
+    position: relative;
+    margin: 0;
+    padding: 0;
+    background-color: rgba(255, 255, 255, 0);
+    box-sizing: border-box;
+    /* border-radius: 100px; */
+}
+
+.winRound {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(250, 250, 250);
+    border-radius: 10px;
+}
+
+/* 头部 搜索框 */
+header {
+    height: 55px;
+    /* background-color: rgb(240, 243, 246); */
+    background-color: rgb(247, 249, 252);
+    border-bottom: 1px rgba(88, 85, 85, 0.075) solid;
+    -webkit-app-region: drag;
+    /* 设置此部分可拖拽，可拖拽区域内部按钮要设置成不可拖拽才可点击 */
+    border-radius: 9px 9px 0 0;
+    padding: 5px 10px 0 44px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#logoIcon {
+    height: 30px;
+    width: 30px;
+    background-color: rgb(45, 196, 146);
+    /* border: 1px solid rgb(45, 196, 146); */
+    border-radius: 30px;
+    padding: 5px;
+}
+
+/*搜索框*/
+.searchBar {
+    /* background: #7BA7AB; */
+
+}
+
+.searchBar form {
+    height: 42px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.searchBar input {
+    width: 250px;
+    height: 28px;
+    padding: 0 0 0 7px;
+    border-radius: 8px;
+    border: 1px solid #8c919156;
+    color: rgba(0, 0, 0, 0.849);
+    /* background: #F9F0DA; */
+    /* background-image: linear-gradient(to right, #fad0c441 0%, #fad0c438 1%, #ffd1ff38 100%); */
+    /* background-color: rgb(240, 243, 246); */
+    background-color: rgb(247, 249, 252);
+    transition: .3s linear;
+    float: right;
+    outline: none;
+    -webkit-app-region: no-drag;
+}
+
+.searchBar input:focus {
+    /* width: 300px; */
+
+}
+
+.searchBar button {
+    background: none;
+    border: none;
+    position: relative;
+    top: 1px;
+    left: -30px;
+    padding: 0;
+    margin: 0;
+}
+
+.searchIcon {
+    height: 20px;
+    width: 20px;
+}
+
+.searchIcon:hover {
+
+    cursor: pointer;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    grid-template-rows: 1fr;
+    display: inline-grid;
+}
+
+/* 侧边导航栏 */
+nav {
+    height: 100%;
+    background-color: rgb(240, 243, 246);
+    -webkit-app-region: drag;
+    /* border-radius: 10PX ; */
+    padding-top: 40px;
+}
+
+.navBtn {
+    /* height: 20px; */
+    /* padding: 8px; */
+    -webkit-app-region: no-drag;
+    text-align: center;
+    margin: 8px 10px;
+    padding: 5px 0 3px 0;
+    border-radius: 8px;
+    color: rgb(107, 114, 126);
+    cursor: pointer;
+}
+
+#history:hover {
+    background-color: rgb(228, 232, 236);
+
+}
+
+#collection:hover {
+    background-color: rgb(228, 232, 236);
+}
+
+.navBtn p {
+    display: inline-block;
+    font-size: 14px;
+    position: relative;
+    margin: 0;
+    top: -4px;
+
+}
+
+.navImg {
+    height: 20px;
+    width: 20px;
+}
+
+main {
+    height: 100%;
+    width: 100%;
+    /* background-color: rgba(127, 255, 212, 0.493); */
+    background-color: rgb(247, 249, 252);
+    overflow: hidden;
+    border-radius: 0 0 10px 0;
+    text-align: center;
+}
+
+/* 按钮在可拖拽区域要设置不可拖拽才生效 */
+/* button {
+    -webkit-app-region: no-drag;
+  } */
+
+#minbt,
+#maxbt,
+#closebt {
+    height: 20px;
+    width: 20px;
+    margin: 3px;
+    padding: 2px;
+    -webkit-app-region: no-drag;
+}
+
+#minbt:hover,
+#maxbt:hover,
+#closebt:hover {
+    border-radius: 3px;
+    background-color: rgba(60, 78, 78, 0.185);
+}
+
+section{
+    padding-right: 10px;
+}
+
+iframe {
+    border-top: #8c919156;
+    height: 78%;
+    width: 100%;
+    padding-top: 10px;
+    /* background-color: rgb(247,249,252); */
+    overflow: scroll;
+}
+
+.audioBox {
+    padding-top: 5px;
+    width: 100%;
+    height: 70px;
+    border-top: 1px gainsboro solid;
+    background-color: rgb(247, 249, 252);
+    position: fixed;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-left:30px ;
+}
+
+audio {
+    visibility: hidden;
+    position: absolute;
+}
+
+.songPic {
+    width: 64px;
+    height: 64px;
+    border-radius: 60px;
+    border: 2px rgba(0, 0, 0, 0.295) solid;
+    box-sizing: border-box;
+}
+
+.ctrlBtn_center {
+    width: 160px;
+    height: 65px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(247, 249, 252);
+}
+
+.ctrlBtn_right {
+    width: 160px;
+    height: 65px;
+    /* background-color: skyblue; */
+    /* left: 10px; */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#songListIcon{
+    padding: 1px;
+    width: 30px;
+    height: 30px;
+}
+#songListIcon:hover{
+    border-radius: 2px;
+    width: 28px;
+    height: 28px;
+    /* background-color: rgba(218, 219, 219, 0.521); */
+}
+
+#preSong,
+#nextSong {
+    width: 40px;
+    height: 40px;
+    top:10px;
+   
+}
+#start
+{
+    width: 45px;
+    height: 45px;
+    top:10px;
+}
+#preSong:hover,
+#start:hover,
+#nextSong:hover{
+    border: 1px solid white;
+    box-sizing: border-box;
+    /* background-color: rgba(218, 219, 219, 0.521); */
+    border-radius: 40px;
+}
+
+
+
+#loadCollection{
+    visibility: hidden;
+    position: absolute;
+}
+#loadHistory{
+    visibility: hidden;
+    position: absolute;
+}

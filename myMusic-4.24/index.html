@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ch">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+  <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'" /> -->
+  <!-- <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'" /> -->
+
+  <title>标题部分</title>
+  <link rel="icon" href="./icon.ico" type="image/x-icon">
+  <link type="text/css" rel="stylesheet" href="./public/indexStyle.css" />
+</head>
+
+<body>
+  <div class="winRound">
+    <!-- 可拖拽区域 -->
+    <header>
+      <img src="./public/image/logo.png" id="logoIcon" alt="">
+      <div class="searchBar">
+        <form onsubmit="return false;">
+          <input type="text" id="searchValue" onkeypress="onkeypressfunction()" placeholder="">
+          <button type="button" onclick="search()"><img class="searchIcon" src="./public/image/search.png"
+              alt=""></button>
+
+        </form>
+      </div>
+      <!-- 窗口控制 -->
+      <section>
+        <img src="./public/image/Minimize.png" id="minbt" title="最小化" alt="">
+        <img src="./public/image/Maximize.png" id="maxbt" title="最大化" alt="">
+        <img src="./public/image/Close.png" id="closebt" title="关闭" alt="">
+      </section>
+    </header>
+    <div class="container">
+      <!-- 左侧边栏 -->
+      <nav>
+
+        <div class="navBtn" id="history" onclick="toHistory()"><img src="./public/image/history.png" class="navImg"
+            alt="">
+          <p>最近播放</p>
+        </div>
+        <div class="navBtn" id="collection" onclick="toCollection()">
+          <img src="./public/image/collection.png" class="navImg" alt="">
+          <p>我的收藏</p>
+        </div>
+      </nav>
+      <main>
+        <!-- 嵌套网页 -->
+        
+        <div id="loadCollection"></div>
+        <div id="loadHistory"></div>
+
+        <!-- <div id="index" style="line-height: 200px;">一起听歌吧~</div> -->
+        <iframe src="" id="iframes" frameborder="0"></iframe>
+
+      </main>
+      <div class="audioBox">
+          <img class="songPic" id="songPic" src="http://p1.music.126.net/UeTuwE7pvjBpypWLudqukA==/3132508627578625.jpg" alt="">
+          <div class="ctrlBtn_center">
+            <img src="./public/image/pre.png" id="preSong" alt="">
+            <img src="./public/image/stop.png" id="start" onclick="SongSwitch()" alt="">
+            <img src="./public/image/next.png" id="nextSong" alt="">
+          </div>
+          <div class="ctrlBtn_right">
+            <img src="./public/image/songList.png" id="songListIcon" onclick="SongsList()" alt="">
+          </div>
+
+          <audio id="audio" controls>
+            <source id="changeSong" src="https://music.163.com/song/media/outer/url?id=399354373.mp3" />
+          </audio>
+        </div>
+    </div>
+
+
+
+
+
+  </div>
+</body>
+
+<script src="./renderer.js"></script>
+
+</html>
