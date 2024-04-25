@@ -11,35 +11,45 @@
 <style>
     .container {
         margin-top: 15px;
+        padding: 0 10px;
+        box-sizing: border-box;
         margin-bottom: 10px;
         width: 100%;
-        height: 100%;
+        /* height: 100%; */
         display: grid;
-        grid-template-columns: 4fr 3fr 4fr 1fr;
+        grid-template-columns: 8fr 6fr 8fr 1fr;
         font-size: 15px;
         padding-bottom: 15px;
         border-bottom: 1px rgba(128, 128, 128, 0.11) solid;
     }
 
+    #resultSong {
+        width: 100%;
+    }
+
     .songContainer {
-        padding: 10px 0;
+        padding: 2px 10px;
+        box-sizing: border-box;
         width: 100%;
         height: 100%;
         display: grid;
-        grid-template-columns: 4fr 3fr 4fr 1fr;
+        grid-template-columns: 8fr 6fr 8fr 1fr;
         font-size: 12px;
-        padding-top: 14px;
+        padding-top: 13px;
     }
 
-    .songContainer:hover{
+    .songContainer:hover {
         background-color: rgba(127, 255, 212, 0.418);
+
     }
 
     .songContainer span img {
-        width: 20px;
-        height: 20px;
+        width: 23px;
+        height: 23px;
         position: relative;
         left: 5px;
+        bottom: 6px;
+        cursor: pointer;
     }
 </style>
 
@@ -52,7 +62,7 @@
     </div>
     <div id="resultSong">
         <!-- <div class="songContainer"> -->
-            <!-- <span>花海</span>
+        <!-- <span>花海</span>
             <span>周杰伦</span>
             <span>魔杰座</span>
             <span><img src="./public/image/collection.png" alt=""></span> -->
@@ -61,7 +71,7 @@
 </body>
 <script src="./renderer.js"></script>
 <script>
-     function loadHistory() {
+    function loadHistory() {
         var resultSong = document.getElementById("resultSong")
         var loadHistory = window.parent.document.getElementById("loadHistory")
         resultSong.innerHTML = loadHistory.innerHTML
@@ -69,4 +79,5 @@
     }
     window.onload = loadHistory()
 </script>
+
 </html>

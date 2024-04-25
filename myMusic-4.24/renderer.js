@@ -164,22 +164,22 @@ function addHistory(songs) {
                         <span><img onClick="addCollection('${songsInfo}')" id="${songs["id"]}"  src="./public/image/collection.png" alt=""></span>
                         </div>`
    collected = loadCollection.innerHTML.split("</div>");
-   console.log(collected)
-   //判断是否已收藏
-   // for (i = 0; i <= collected.length; i++) {
+   // console.log(collected)
+   // 判断是否已收藏
+   for (i = 0; i <= collected.length; i++) {
 
-   //    if (collected[i] && collected[i].match(songs["id"])) {
-   //       console.log(collected[i])
-   //       console.log(songs["id"], "-->这个歌曲被收藏了")
-   //       addSong = ` <div class="songContainer" ondblClick="changeSong('${songsInfo}')">
-   //                            <span>${songs["name"]}</span>
-   //                            <span>${songs['artists'][0]['name']}</span>
-   //                            <span>${songs['album']['name']}</span>
-   //                            <span><img onClick="addCollection('${songsInfo}')" id="${songs["id"]}"  src="./public/image/star.png" alt=""></span>
-   //                      </div>`
+      if (collected[i] && collected[i].match(songs["id"])) {
+         console.log(collected[i])
+         console.log(songs["id"], "-->这个歌曲被收藏了")
+         addSong = ` <div class="songContainer" ondblClick="changeSong('${songsInfo}')">
+                              <span>${songs["name"]}</span>
+                              <span>${songs['artists'][0]['name']}</span>
+                              <span>${songs['album']['name']}</span>
+                              <span><img onClick="addCollection('${songsInfo}')" id="${songs["id"]}"  src="./public/image/star.png" alt=""></span>
+                        </div>`
 
-   //    }
-   // }
+      }
+   }
    loadHistory.innerHTML += addSong
 }
 
@@ -197,10 +197,12 @@ function addSongResult(songs) {
    console.log(typeof (songs))
    var resultSong = idoc.getElementById("resultSong");
    var loadCollection = document.getElementById("loadCollection");
-   loadCollection = loadCollection.innerHTML.split("</div>");
+   collected = loadCollection.innerHTML.split("</div>");
    var addSong;
-   // console.log(loadCollection);
+   // console.log(collected);
+
    for (var i in songs) {
+      // 将获取的歌曲信息编码，用于函数传值
       songsInfo = encodeURIComponent(JSON.stringify(songs[i]))
       // console.log(songsInfo)
       // console.log(JSON.parse(decodeURIComponent(songsInfo)))
@@ -213,10 +215,10 @@ function addSongResult(songs) {
       getID = songs[i]["id"]
 
       //判断是否已收藏
-      for (i = 0; i <= loadCollection.length; i++) {
-
-         if (loadCollection[i] && loadCollection[i].match(getID)) {
-            console.log(loadCollection[i])
+      for (j = 0; j <= collected.length; j++) {
+         // 拆分的内容，找歌曲id
+         if (collected[j] && collected[j].match(getID)) {
+            // console.log(collected[i])
             console.log(getID, "-->这个歌曲被收藏了")
             addSong = ` <div class="songContainer" ondblClick="changeSong('${songsInfo}')">
                               <span>${songs[i]["name"]}</span>
