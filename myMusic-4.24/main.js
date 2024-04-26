@@ -17,7 +17,7 @@ createWindow = () => {
     // backgroundColor:'skyblue',
     // transparent: false,  // 当transparent为true会导致win.restore()无效，有向下还原
     // transparent: true,//设置窗体背景透明,圆角窗口，只有最大化，无向下还原
-    frame: false,// 去除顶部操作按钮
+    // frame: false,// 去除顶部操作按钮
     resizable: true,
     icon: 'icon.ico',
     width: 1000,
