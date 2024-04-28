@@ -146,10 +146,30 @@ function changeSong(songs) {
    audio.load()
    audio.play()
 
-   songs=encodeURIComponent(JSON.stringify(songs))
+   audio.oncanplay = function () {
+      console.log("音乐时长", audio.duration);//音乐总时长
+      //处理时长
+      var time = audio.duration;
+      //分钟
+      var minute = time / 60;
+      var minutes = parseInt(minute);
+      if (minutes < 10) {
+         minutes = "0" + minutes;
+      }
+      //秒
+      var second = time % 60;
+      var seconds = Math.round(second);
+      if (seconds < 10) {
+         seconds = "0" + seconds;
+      }
+      console.log('处理音乐时长', minutes + "：" + seconds);
+
+   }
+   songs = encodeURIComponent(JSON.stringify(songs))
    addHistory(songs)
 
 }
+
 
 // 将元素写入试听
 function addHistory(songs) {
@@ -288,7 +308,34 @@ function SongSwitch() {
    }
 }
 
+
 // 获取当前页面元素作为歌单，双击播放调用，向前向后切换歌曲（正序逆序）
-function songList(){
-   
+function SongsList() {
+   // 歌单列表滑出
+   songsList = document.getElementById('songsList');
+   if (songsList.style.left == '-170px') {
+      songsList.style.left = '130px'
+   } else {
+      songsList.style.left = '-170px'
+   }
+
+   resultSong = document.getElementById('resultSong');
+
+   //获取子页面元素  
+   var iframes = document.getElementById("iframes");
+   var idoc = iframes.contentWindow.document;
+   // console.log(iframes.src.split('/').pop())
+   if (iframes.src.split('/').pop() == 'collection.html') {
+      load = document.getElementById('loadCollection')
+      resultSong.innerHTML = load.innerHTML
+   } else {
+      load = document.getElementById('loadHistory')
+      resultSong.innerHTML = load.innerHTML
+   }
+
+
+   // var searchValue = document.getElementById("searchValue");
+   // // 获取嵌套页面的doc,获取search页面的标签，写入
+
+   // var searchSpan = idoc.getElementById("search");
 }
