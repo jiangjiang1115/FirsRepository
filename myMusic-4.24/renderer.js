@@ -141,7 +141,7 @@ function changeSong(songs) {
    // console.log(songPicEl)
    songPicEl.src = songs["album"]["picUrl"]
    var changeSong = window.parent.document.getElementById("changeSong");
-   changeSong.className = songs["id"] + "/" + songs['artists'][0]['name']+"/"+songs["album"]["picUrl"]
+   changeSong.className = songs["id"] + "/" + songs['artists'][0]['name'] + "/" + songs["album"]["picUrl"]
    changeSong.src = "https://music.163.com/song/media/outer/url?id=" + songs["id"] + ".mp3"
    audio.load()
    audio.play()
@@ -350,31 +350,27 @@ function preSong() {
    playingID = changeSong.className.split("/")[0]
    console.log(playingID)
 
-   songPic=document.getElementById("songPic")
+   songPic = document.getElementById("songPic")
 
+  
 
    //  判断当前播放歌曲位置
    for (i = 0; i < load.childNodes.length; i++) {
       // 单数为歌曲元素
       if (i % 2 == 1) {
          if (playingID == load.childNodes[i].childNodes[7].childNodes[0].id) {
-            // console.log("准备切换")
-            // songSrc=changeSong.className.split("/")[2]
-            // songPic.src=songSrc
-            // changeSong.src="https://music.163.com/song/media/outer/url?id="+changeSong.className.split("/")[0]+".mp3"
-
-            // var element = load.childNodes[1]
-            // console.log(element)
-            // // var event = new MouseEvent("dblclick", {
-            // //    bubbles: true,
-            // //    cancelable: true,
-            // //    view: window
-            // // });
-            // element.dispatchEvent(new Event('dblclick'));
-     
+            //   获取歌曲信息
+            console.log(i, "找到歌曲当前位置")
+            songs = JSON.parse(decodeURIComponent(load.childNodes[i - 2].innerHTML.split("'")[1]))
+            console.log(songs)
+            songPic.src = songs["album"]["picUrl"]
+            changeSong.className = songs["id"] + "/" + songs['artists'][0]['name'] + "/" + songs["album"]["picUrl"]
+            changeSong.src = "https://music.163.com/song/media/outer/url?id=" + songs["id"] + ".mp3"
+            
          }
       }
 
    }
 
 }
+
