@@ -1,0 +1,3 @@
+用例,画质,场景,AvgFPS,AvgFPS差值,AvgFPS差值占比,MS,MS差值,MS差值占比,MinFPS,FPS TP90,AvgAppCPU(%),PeakMemory(MB),虚拟峰值差值,虚拟峰值差值占比,Avg(GPULoad)[%],Avg(GPUMemoryUsed)[MB],报告链接
+1060BD_默认1,,,35.25,,,,,,34.74,34.95,12.53,5206.85,,,98.24,2433.98,https://perfeye.console.testplus.cn/case/65e838dcfb30781e964d0f78/report?appKey=JX3
+1060BD_替换1,,,40.19,,,,,,39.21,39.74,13.70,5231.51,,,98.05,2449.74,https://perfeye.console.testplus.cn/case/65e839f7fb30781e964d0ffd/report?appKey=JX3

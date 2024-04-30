@@ -1,0 +1,1 @@
+用例	画质	场景	AvgFPS	AvgFPS差值	AvgFPS差值占比	MS	MS差值	MS差值占比	MinFPS	FPS TP90	AvgAppCPU(%)	PeakMemory(MB)	虚拟峰值差值	虚拟峰值差值占比	Avg(GPULoad)[%]	Avg(GPUMemoryUsed)[MB]	报告链接
