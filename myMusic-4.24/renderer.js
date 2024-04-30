@@ -130,7 +130,6 @@ function loadCollect(collectionSong) {
 
 // 双击切换歌曲
 function changeSong(songs) {
-   // songs[i]["id"]},'${songs[i]["album"]["picUrl"]
    var songs = JSON.parse(decodeURIComponent(songs));
    // console.log(songs)
    console.log("触发双击事件")
@@ -142,6 +141,7 @@ function changeSong(songs) {
    // console.log(songPicEl)
    songPicEl.src = songs["album"]["picUrl"]
    var changeSong = window.parent.document.getElementById("changeSong");
+   changeSong.className = songs["id"] + "/" + songs['artists'][0]['name']+"/"+songs["album"]["picUrl"]
    changeSong.src = "https://music.163.com/song/media/outer/url?id=" + songs["id"] + ".mp3"
    audio.load()
    audio.play()
@@ -324,7 +324,7 @@ function SongsList() {
    //获取子页面元素  
    var iframes = document.getElementById("iframes");
    var idoc = iframes.contentWindow.document;
-   // console.log(iframes.src.split('/').pop())
+   // 根据当前子页面修改歌单
    if (iframes.src.split('/').pop() == 'collection.html') {
       load = document.getElementById('loadCollection')
       resultSong.innerHTML = load.innerHTML
@@ -332,10 +332,49 @@ function SongsList() {
       load = document.getElementById('loadHistory')
       resultSong.innerHTML = load.innerHTML
    }
+}
+
+function preSong() {
+   load = document.getElementById('loadHistory')
+   // 自动触发双击事件，单数为子元素，，弃
+   // var element = load.childNodes[1]
+   // var event = new MouseEvent("dblclick", {
+   //    bubbles: true,
+   //    cancelable: true,
+   //    view: window
+   // });
+   // element.dispatchEvent(event);
+   changeSong = document.getElementById("changeSong")
+   console.log(changeSong.src)
+   // console.log(changeSong.className)
+   playingID = changeSong.className.split("/")[0]
+   console.log(playingID)
+
+   songPic=document.getElementById("songPic")
 
 
-   // var searchValue = document.getElementById("searchValue");
-   // // 获取嵌套页面的doc,获取search页面的标签，写入
+   //  判断当前播放歌曲位置
+   for (i = 0; i < load.childNodes.length; i++) {
+      // 单数为歌曲元素
+      if (i % 2 == 1) {
+         if (playingID == load.childNodes[i].childNodes[7].childNodes[0].id) {
+            // console.log("准备切换")
+            // songSrc=changeSong.className.split("/")[2]
+            // songPic.src=songSrc
+            // changeSong.src="https://music.163.com/song/media/outer/url?id="+changeSong.className.split("/")[0]+".mp3"
 
-   // var searchSpan = idoc.getElementById("search");
+            // var element = load.childNodes[1]
+            // console.log(element)
+            // // var event = new MouseEvent("dblclick", {
+            // //    bubbles: true,
+            // //    cancelable: true,
+            // //    view: window
+            // // });
+            // element.dispatchEvent(new Event('dblclick'));
+     
+         }
+      }
+
+   }
+
 }

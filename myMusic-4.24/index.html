@@ -48,7 +48,7 @@
       </nav>
       <main>
         <!-- 嵌套网页 -->
-        
+
         <div id="loadCollection"></div>
         <div id="loadHistory"></div>
 
@@ -57,36 +57,37 @@
 
       </main>
       <div class="audioBox">
-          <img class="songPic" id="songPic" src="http://p1.music.126.net/UeTuwE7pvjBpypWLudqukA==/3132508627578625.jpg" alt="">
-          <div class="ctrlBtn_center">
-            <img src="./public/image/pre.png" id="preSong" alt="">
-            <img src="./public/image/stop.png" id="start" onclick="SongSwitch()" alt="">
-            <img src="./public/image/next.png" id="nextSong" alt="">
-          </div>
-          <div class="ctrlBtn_right">
-            <div id="songsList">
-              <div class="container">
-                <span>歌曲</span>
-                <span>演唱者</span>
-                <span>专辑名</span>
-                <span>收藏</span>
-            </div>
-            <div id="resultSong">
-              <div class="songContainer">
-                  <span>花海</span>
-                  <span>周杰伦</span>
-                  <span>魔杰座</span>
-                  <span><img src="./public/image/collection.png" alt=""></span>
-              </div>
-          </div>
-            </div>
-            <img src="./public/image/songList.png" id="songListIcon" onclick="SongsList()" alt="">
-          </div>
-
-          <audio id="audio" controls>
-            <source id="changeSong" src="https://music.163.com/song/media/outer/url?id=399354373.mp3" />
-          </audio>
+        <img class="songPic" id="songPic" src="http://p1.music.126.net/UeTuwE7pvjBpypWLudqukA==/3132508627578625.jpg"
+          alt="">
+        <div class="ctrlBtn_center">
+          <img src="./public/image/pre.png" id="preSong" onclick="preSong()" alt="">
+          <img src="./public/image/stop.png" id="start" onclick="SongSwitch()" alt="">
+          <img src="./public/image/next.png" id="nextSong" alt="">
         </div>
+        <div class="ctrlBtn_right">
+          <div id="songsList">
+            <!-- <div class="container">
+              <span>歌曲</span>
+              <span>演唱者</span>
+              <span style="display: none;">专辑名</span>
+              <span>收藏</span>
+            </div> -->
+            <div id="resultSong">
+              <!-- <div class="songContainer">
+                <span>花海</span>
+                <span>周杰伦</span>
+                <span style="display: none;">魔杰座</span>
+                <span><img src="./public/image/collection.png" alt=""></span>
+              </div> -->
+            </div>
+          </div>
+          <img src="./public/image/songList.png" id="songListIcon" onclick="SongsList()" alt="">
+        </div>
+
+        <audio id="audio" controls>
+          <source id="changeSong" src="https://music.163.com/song/media/outer/url?id=399354373.mp3" />
+        </audio>
+      </div>
     </div>
 
 
