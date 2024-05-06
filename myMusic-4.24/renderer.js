@@ -80,7 +80,7 @@ function search() {
    })
 }
 
-// 收藏歌曲
+// 收藏 & 取消收藏
 function addCollection(songs) {
    var loadCollection = window.parent.document.getElementById("loadCollection")
    var songs = JSON.parse(decodeURIComponent(songs));
@@ -107,6 +107,10 @@ function addCollection(songs) {
          }
       }
       loadCollection.innerHTML = collected.join("")
+      var iframes = window.parent.document.getElementById('iframes')
+      if (iframes.src.split('/').pop() == 'collection.html') {
+         iframes.contentWindow.location.reload(true);
+      }
 
    } else {
       // 添加收藏
@@ -119,12 +123,9 @@ function addCollection(songs) {
                    <span><img onClick="addCollection('${songsInfo}')" id="${songs["id"]}"  src="./public/image/star.png" alt=""></span>
                 </div>`
       loadCollection.innerHTML += addSong
-      loadCollect(loadCollection.innerHTML)
+
    }
-}
-function loadCollect(collectionSong) {
-   var loadCollection = window.parent.document.getElementById("loadCollection")
-   loadCollection.innerHTML = collectionSong
+
 }
 
 
@@ -140,9 +141,16 @@ function changeSong(songs) {
    var songPicEl = window.parent.document.getElementById("songPic");
    // console.log(songPicEl)
    songPicEl.src = songs["album"]["picUrl"]
+
    var changeSong = window.parent.document.getElementById("changeSong");
    changeSong.className = songs["id"] + "/" + songs['artists'][0]['name'] + "/" + songs["album"]["picUrl"]
    changeSong.src = "https://music.163.com/song/media/outer/url?id=" + songs["id"] + ".mp3"
+
+   var songName = window.parent.document.getElementById("songName");
+   var songArtists = window.parent.document.getElementById("songArtists");
+   songName.innerText = songs["name"]
+   songArtists.innerText = songs['artists'][0]['name']
+
    audio.load()
    audio.play()
 
@@ -171,7 +179,7 @@ function changeSong(songs) {
 }
 
 
-// 将元素写入试听
+// 在search页面，将元素写入试听 loadHistory
 function addHistory(songs) {
    var songs = JSON.parse(decodeURIComponent(songs));
    songsInfo = encodeURIComponent(JSON.stringify(songs))
@@ -187,7 +195,7 @@ function addHistory(songs) {
    // console.log(collected)
    // 判断是否已收藏
    for (i = 0; i <= collected.length; i++) {
-
+      console.log(i, "此歌曲是否被收藏")
       if (collected[i] && collected[i].match(songs["id"])) {
          console.log(collected[i])
          console.log(songs["id"], "-->这个歌曲被收藏了")
@@ -336,41 +344,89 @@ function SongsList() {
 
 function preSong() {
    load = document.getElementById('loadHistory')
-   // 自动触发双击事件，单数为子元素，，弃
-   // var element = load.childNodes[1]
-   // var event = new MouseEvent("dblclick", {
-   //    bubbles: true,
-   //    cancelable: true,
-   //    view: window
-   // });
-   // element.dispatchEvent(event);
    changeSong = document.getElementById("changeSong")
    console.log(changeSong.src)
-   // console.log(changeSong.className)
    playingID = changeSong.className.split("/")[0]
    console.log(playingID)
 
    songPic = document.getElementById("songPic")
 
-  
+   audio = document.getElementById("audio");
 
-   //  判断当前播放歌曲位置
+   //  在歌曲列表中 判断 当前播放歌曲位置
    for (i = 0; i < load.childNodes.length; i++) {
       // 单数为歌曲元素
-      if (i % 2 == 1) {
-         if (playingID == load.childNodes[i].childNodes[7].childNodes[0].id) {
-            //   获取歌曲信息
-            console.log(i, "找到歌曲当前位置")
-            songs = JSON.parse(decodeURIComponent(load.childNodes[i - 2].innerHTML.split("'")[1]))
-            console.log(songs)
-            songPic.src = songs["album"]["picUrl"]
-            changeSong.className = songs["id"] + "/" + songs['artists'][0]['name'] + "/" + songs["album"]["picUrl"]
-            changeSong.src = "https://music.163.com/song/media/outer/url?id=" + songs["id"] + ".mp3"
-            
+      try {
+         if (i % 2 == 1) {
+            if (playingID == load.childNodes[i].childNodes[7].childNodes[0].id) {
+               //   获取歌曲信息
+               console.log(i, "找到歌曲当前位置")
+               songs = JSON.parse(decodeURIComponent(load.childNodes[i - 2].innerHTML.split("'")[1]))
+               console.log(songs)
+               songPic.src = songs["album"]["picUrl"]
+               changeSong.className = songs["id"] + "/" + songs['artists'][0]['name'] + "/" + songs["album"]["picUrl"]
+               changeSong.src = "https://music.163.com/song/media/outer/url?id=" + songs["id"] + ".mp3"
+               audio.load()
+               audio.play()
+            }
          }
+      } catch (error) {
+         console.log(error)
+         console.log(load.childNodes.length - 1)
+         songs = JSON.parse(decodeURIComponent(load.childNodes[load.childNodes.length - 1].innerHTML.split("'")[1]))
+         console.log(songs)
+         songPic.src = songs["album"]["picUrl"]
+         changeSong.className = songs["id"] + "/" + songs['artists'][0]['name'] + "/" + songs["album"]["picUrl"]
+         changeSong.src = "https://music.163.com/song/media/outer/url?id=" + songs["id"] + ".mp3"
+         audio.load()
+         audio.play()
       }
+
 
    }
 
+}
+function nextSong() {
+   load = document.getElementById('loadHistory')
+   changeSong = document.getElementById("changeSong")
+   console.log(changeSong.src)
+   playingID = changeSong.className.split("/")[0]
+   console.log(playingID)
+
+   songPic = document.getElementById("songPic")
+
+   audio = document.getElementById("audio");
+
+   //  在歌曲列表中 判断 当前播放歌曲位置
+   for (i = 0; i < load.childNodes.length; i++) {
+      // 单数为歌曲元素
+      try {
+         if (i % 2 == 1) {
+            if (playingID == load.childNodes[i].childNodes[7].childNodes[0].id) {
+               //   获取歌曲信息
+               console.log(i, "找到歌曲当前位置")
+               songs = JSON.parse(decodeURIComponent(load.childNodes[i + 2].innerHTML.split("'")[1]))
+               console.log(songs)
+               songPic.src = songs["album"]["picUrl"]
+               changeSong.className = songs["id"] + "/" + songs['artists'][0]['name'] + "/" + songs["album"]["picUrl"]
+               changeSong.src = "https://music.163.com/song/media/outer/url?id=" + songs["id"] + ".mp3"
+               audio.load()
+               audio.play()
+            }
+         }
+      } catch (error) {
+         console.log(error)
+         console.log(load.childNodes.length - 1)
+         songs = JSON.parse(decodeURIComponent(load.childNodes[1].innerHTML.split("'")[1]))
+         console.log(songs)
+         songPic.src = songs["album"]["picUrl"]
+         changeSong.className = songs["id"] + "/" + songs['artists'][0]['name'] + "/" + songs["album"]["picUrl"]
+         changeSong.src = "https://music.163.com/song/media/outer/url?id=" + songs["id"] + ".mp3"
+         audio.load()
+         audio.play()
+      }
+
+
+   }
 }
 

@@ -57,12 +57,19 @@
 
       </main>
       <div class="audioBox">
-        <img class="songPic" id="songPic" src="http://p1.music.126.net/UeTuwE7pvjBpypWLudqukA==/3132508627578625.jpg"
-          alt="">
+        <div id="picBox">
+          <img class="songPic" id="songPic" src="http://p1.music.126.net/UeTuwE7pvjBpypWLudqukA==/3132508627578625.jpg"
+            alt="">
+          <div id="infoBox">
+            <span id="songName">花海</span>&nbsp;-
+            <span id="songArtists">周杰伦</span>
+          </div>
+
+        </div>
         <div class="ctrlBtn_center">
           <img src="./public/image/pre.png" id="preSong" onclick="preSong()" alt="">
           <img src="./public/image/stop.png" id="start" onclick="SongSwitch()" alt="">
-          <img src="./public/image/next.png" id="nextSong" alt="">
+          <img src="./public/image/next.png" id="nextSong" onclick="nextSong()" alt="">
         </div>
         <div class="ctrlBtn_right">
           <div id="songsList">
@@ -82,6 +89,7 @@
             </div>
           </div>
           <img src="./public/image/songList.png" id="songListIcon" onclick="SongsList()" alt="">
+
         </div>
 
         <audio id="audio" controls>
