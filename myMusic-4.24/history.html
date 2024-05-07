@@ -74,8 +74,68 @@
     function loadHistory() {
         var resultSong = document.getElementById("resultSong")
         var loadHistory = window.parent.document.getElementById("loadHistory")
+        var loadCollection = window.parent.document.getElementById("loadCollection")
+
+        // 去重
+        historyData = loadHistory.innerHTML.split("</div>");
+        collectionData = loadCollection.innerHTML.split("</div>");
+        console.log(collectionData)
+        console.log(historyData)
+        for (i = 0; i < historyData.length - 1; i++) {
+            songID = historyData[i].split('"')[7];
+            for (j = 0; j < historyData.length - 1; j++) {
+                if (j > i && historyData[j] && songID == historyData[j].split('"')[7]) {
+                    console.log("此处捕捉到重复")
+                    historyData[j] = ""
+                    // console.log(historyData[i + 1])
+                }
+            }
+        }
+        // 判断收藏,把每个试听的歌比对收藏歌曲的id
+        for (i = 0; i <= historyData.length; i++) {
+            if (collectionData[0]) {
+                // 收藏不为空时
+                for (j = 0; j <= collectionData.length; j++) {
+                    // 在非空元素且id相等的情况下
+                    if (historyData[i] && collectionData[j] && historyData[i].split('"')[7] == collectionData[j].split('"')[7]) {
+                        console.log("这首歌被收藏啦",i)
+                        currentSong = historyData[i].split('"')
+                        currentSong[9] = "./public/image/star.png"
+                        historyData[i] = currentSong.join("")
+                        break;
+                    }else if(j==collectionData.length-1&&historyData[i]&&historyData[i].split('"')[9]=="./public/image/star.png") {
+                        // 非空元素且没有相同id时
+                        currentSong = historyData[i].split('"')
+                        currentSong[9] = "./public/image/collection.png"
+                        historyData[i] = currentSong.join("")
+                    }
+                    
+                }
+
+            }else {
+                // 收藏为空时判断为未收藏
+                        if (historyData[i]) {
+                            console.log("这首歌没有被收藏",i)
+                            currentSong = historyData[i].split('"')
+                            console.log(currentSong)
+                            currentSong[9] = "./public/image/collection.png"
+                            historyData[i] = currentSong.join("")
+                        }
+
+                    }
+
+
+        }
+        loadHistory.innerHTML = ''
+        for (i = 0; i < historyData.length; i++) {
+            if (historyData[i]) {
+                historyData[i] += "</div>"
+                loadHistory.innerHTML += historyData[i]
+            }
+        }
         resultSong.innerHTML = loadHistory.innerHTML
-        console.log(loadHistory.innerHTML)
+
+
     }
     window.onload = loadHistory()
 </script>

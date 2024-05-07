@@ -195,7 +195,6 @@ function addHistory(songs) {
    // console.log(collected)
    // 判断是否已收藏
    for (i = 0; i <= collected.length; i++) {
-      console.log(i, "此歌曲是否被收藏")
       if (collected[i] && collected[i].match(songs["id"])) {
          console.log(collected[i])
          console.log(songs["id"], "-->这个歌曲被收藏了")
@@ -366,6 +365,12 @@ function preSong() {
                songPic.src = songs["album"]["picUrl"]
                changeSong.className = songs["id"] + "/" + songs['artists'][0]['name'] + "/" + songs["album"]["picUrl"]
                changeSong.src = "https://music.163.com/song/media/outer/url?id=" + songs["id"] + ".mp3"
+               startPic = document.getElementById("start")
+               startPic.src = "./public/image/start.png"
+               var songName = document.getElementById("songName");
+               var songArtists = document.getElementById("songArtists");
+               songName.innerText = songs["name"]
+               songArtists.innerText = songs['artists'][0]['name']
                audio.load()
                audio.play()
             }
@@ -378,6 +383,12 @@ function preSong() {
          songPic.src = songs["album"]["picUrl"]
          changeSong.className = songs["id"] + "/" + songs['artists'][0]['name'] + "/" + songs["album"]["picUrl"]
          changeSong.src = "https://music.163.com/song/media/outer/url?id=" + songs["id"] + ".mp3"
+         startPic = document.getElementById("start")
+         startPic.src = "./public/image/start.png"
+         var songName = document.getElementById("songName");
+         var songArtists = document.getElementById("songArtists");
+         songName.innerText = songs["name"]
+         songArtists.innerText = songs['artists'][0]['name']
          audio.load()
          audio.play()
       }
@@ -410,6 +421,12 @@ function nextSong() {
                songPic.src = songs["album"]["picUrl"]
                changeSong.className = songs["id"] + "/" + songs['artists'][0]['name'] + "/" + songs["album"]["picUrl"]
                changeSong.src = "https://music.163.com/song/media/outer/url?id=" + songs["id"] + ".mp3"
+               startPic = document.getElementById("start")
+               startPic.src = "./public/image/start.png"
+               var songName = document.getElementById("songName");
+               var songArtists = document.getElementById("songArtists");
+               songName.innerText = songs["name"]
+               songArtists.innerText = songs['artists'][0]['name']
                audio.load()
                audio.play()
             }
@@ -422,6 +439,12 @@ function nextSong() {
          songPic.src = songs["album"]["picUrl"]
          changeSong.className = songs["id"] + "/" + songs['artists'][0]['name'] + "/" + songs["album"]["picUrl"]
          changeSong.src = "https://music.163.com/song/media/outer/url?id=" + songs["id"] + ".mp3"
+         startPic = document.getElementById("start")
+         startPic.src = "./public/image/start.png"
+         var songName = document.getElementById("songName");
+         var songArtists = document.getElementById("songArtists");
+         songName.innerText = songs["name"]
+         songArtists.innerText = songs['artists'][0]['name']
          audio.load()
          audio.play()
       }
