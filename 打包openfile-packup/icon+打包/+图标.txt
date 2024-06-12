@@ -1,0 +1,2 @@
+ pyinstaller -w -F -i pp.ico openfile.py    保存源文件+图标
+ pyi-makespec --onefile --windowed --icon=pp.ico openfile.py  打包全+图标

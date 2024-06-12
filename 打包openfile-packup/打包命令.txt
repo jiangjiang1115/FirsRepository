@@ -1,0 +1,16 @@
+打包命令：
+
+1. 只打一个py文件 --onefile
+pyinstaller  --onefile XX.py
+ 
+
+2. 添加图标文件夹 --add-data
+pyinstaller --add-data "icon/*;./icon"  --onefile XX.py
+
+3. 不带控制台 -w 或 --noconsole
+pyinstaller --add-data "icon/*;./icon"  --onefile XX.py --noconsole
+
+4. 排除某些依赖 --exclude-module xxpackagename 如果有多个，就重复
+pyinstaller --add-data "icon/*;./icon"  -w --exclude-module xxx1 --exclude-module xxx2 --onefile XX.py
+
+参考：https://www.cnblogs.com/uoky/p/17916300.html
