@@ -1,0 +1,7 @@
+{
+  "command": "D: &&cd D:\\\\client &&svn info",
+  "c":"E:&&svn update -r",
+  "a6": "T1",
+  "chatGPT_url": "https://open.feishu.cn/open-apis/bot/v2/hook/4889b73a-9c69-466f-85ad-6beae1113bf8",
+  "sleep": "200"
+}
