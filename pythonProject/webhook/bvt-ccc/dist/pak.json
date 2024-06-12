@@ -1,0 +1,7 @@
+{
+  "command": "D: &&cd D:\\\\client &&svn info",
+  "c":"E:&&svn update -r",
+  "a6": "T1",
+  "chatGPT_url": "https://xz.wps.cn/api/v1/webhook/send?key=d6cdac49fccab909ebf3c508c65618b7",
+  "sleep": "200"
+}
